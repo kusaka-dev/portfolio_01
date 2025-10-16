@@ -1,0 +1,35 @@
+@use "./module" as *;
+@use "./config" as *;
+
+html {
+    scroll-behavior: smooth;
+
+    @include sp {
+        font-size: calc(16 / #{$device_sp} * 100vw);
+    }
+}
+
+body {
+    font-family: "Zen Maru Gothic", Helvetica, Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", 游ゴシック, "Yu Gothic ", YuGothic, Osaka, メイリオ, Meiryo, "MS Pゴシック", "MS P Gothic", sans-serif;
+    background: #F6F2CD url("/assets/img/top/deco_bg.webp") repeat;
+}
+
+a {
+    transition: $default-hover-anime;
+    cursor: pointer;
+
+    &:hover{
+        opacity: 0.6;
+    }
+}
+
+rt{
+    font-size: 8.66px;
+    position: relative;
+    top: 0;
+    transform: translateY(1em);
+
+    @include sp{
+        font-size: min(calc(7.14 / #{$device_sp} * 100vw),10px);
+    }
+}
