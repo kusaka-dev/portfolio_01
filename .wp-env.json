@@ -1,0 +1,14 @@
+{
+  "themes": [
+    "./themes/takumi-theme"
+  ],
+  "mappings": {
+    "wp-content/themes/takumi-theme": "./themes/takumi-theme"
+  },
+  "config": {
+    "WP_DEBUG": true,
+    "WP_DEBUG_LOG": true,
+    "WP_DEBUG_DISPLAY": true,
+    "SCRIPT_DEBUG": true
+  }
+}
