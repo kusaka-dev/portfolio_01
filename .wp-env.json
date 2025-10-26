@@ -1,9 +1,18 @@
 {
   "themes": [
-    "./themes/takumi-theme"
+    "./wordpress/themes/takumi-theme"
+  ],
+  "plugins": [
+    "./wordpress/plugins/advanced-custom-fields-pro",
+    "./wordpress/plugins/all-in-one-wp-migration",
+    "./wordpress/plugins/contact-form-7"
   ],
   "mappings": {
-    "wp-content/themes/takumi-theme": "./themes/takumi-theme"
+    "wp-content/themes/takumi-theme": "./wordpress/themes/takumi-theme",
+    "wp-content/plugins/advanced-custom-fields-pro": "./wordpress/plugins/advanced-custom-fields-pro",
+    "wp-content/plugins/all-in-one-wp-migration": "./wordpress/plugins/all-in-one-wp-migration",
+    "wp-content/plugins/contact-form-7": "./wordpress/plugins/contact-form-7",
+    "setup": "./setup"
   },
   "config": {
     "WP_DEBUG": true,

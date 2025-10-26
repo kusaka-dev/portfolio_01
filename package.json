@@ -1,0 +1,30 @@
+{
+  "name": "portfolio_01",
+  "version": "1.0.0",
+  "description": "Takumi Theme - WordPress Custom Theme for Architecture Design",
+  "scripts": {
+    "wp-env": "wp-env",
+    "start": "wp-env start",
+    "stop": "wp-env stop",
+    "destroy": "wp-env destroy",
+    "clean": "wp-env clean",
+    "setup:pages": "wp-env run cli wp eval-file setup/create-pages.php",
+    "setup:menus": "wp-env run cli wp eval-file setup/create-menus.php",
+    "setup:settings": "wp-env run cli wp eval-file setup/initial-settings.php",
+    "reset": "wp-env run cli wp eval-file setup/reset.php"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "architecture"
+  ],
+  "license": "GPLv2",
+  "packageManager": "pnpm@10.14.0",
+  "devDependencies": {
+    "@wordpress/env": "^10.13.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

@@ -1,118 +1,195 @@
-# Portfolio 01
+# Takumi Theme
 
-## テーマ情報
+建築設計事務所向けWordPressカスタムテーマ
 
-- **テーマ名**: Takumi Theme
+## 基本情報
+
 - **バージョン**: 1.0
 - **作成者**: Ryuya Kusaka
-- **URL**: https://portfolio01.kusaka-web.site
 - **ライセンス**: GPLv2 or later
-- **必要なPHPバージョン**: 7.4以上
-- **対応WordPressバージョン**: 6.7
+- **PHP**: 7.4以上
+- **WordPress**: 6.7以上
+
+## 技術スタック
+
+### フロントエンド
+- jQuery 3.7.1
+- Swiper 11.2.6
+- GSAP 3.12.7 + ScrollTrigger
+- FontAwesome 5.8.2
+
+### 開発環境
+- Node.js 18以上
+- pnpm 8以上
+- @wordpress/env (Docker)
 
 ## 主な機能
 
 ### カスタム投稿タイプ
-- **実績紹介 (works)**: 建築実績を管理・表示するカスタム投稿タイプ
-  - アーカイブページ対応
-  - アイキャッチ画像対応
-  - カスタムタクソノミー（実績カテゴリー）対応
-
-### カスタムタクソノミー
-- **実績カテゴリー (work_category)**: 実績をカテゴリーで分類
-  - デフォルトカテゴリー: 商業施設、住宅、公共施設、リノベーション
+- **works**: 実績紹介（アーカイブ、タクソノミー対応）
 
 ### ナビゲーションメニュー
-3つのメニュー位置を提供:
-- **ヘッダーメニュー**: サイトヘッダー用のメインナビゲーション
-- **ユーティリティメニュー**: ユーティリティリンク用
-- **ドロワーメニュー**: モバイル用のドロワーメニュー
+- ヘッダーメニュー
+- フッターメニュー
+- ドロワーメニュー
 
-### ウィジェットエリア
-2つのウィジェットエリアを提供:
-- **サイドバー**: 通常の投稿・固定ページ用
-- **実績紹介サイドバー**: 実績紹介ページ専用
+### ウィジェット
+- サイドバー（通常／実績専用）
+- 最新実績投稿
+- 実績カテゴリー一覧
 
-### カスタムウィジェット
-- **最新の実績紹介投稿**: カスタム投稿タイプ「works」の最新投稿を表示
-- **実績カテゴリー一覧**: カスタムタクソノミー「work_category」の一覧を表示
+### プラグイン
+- Advanced Custom Fields Pro
+- Contact Form 7
+- All-in-One WP Migration
 
-## 使用ライブラリ
+## セットアップ
 
-- **jQuery** 3.7.1: DOM操作
-- **Swiper** 11.2.6: スライダー実装
-- **GSAP** 3.12.7: アニメーション
-- **ScrollTrigger**: スクロール連動アニメーション
-- **FontAwesome** 5.8.2: アイコンフォント
+### 1. 環境構築
 
-## ディレクトリ構成
+```bash
+# 依存パッケージインストール
+pnpm install
 
-```
-takumi/
-├── assets/
-│   ├── css/                    # コンパイル済みCSS
-│   │   ├── common.css
-│   │   └── style.css
-│   ├── js/                     # JavaScriptファイル
-│   │   ├── script.js           # メインスクリプト
-│   │   └── swiper-init.js      # Swiper初期化
-│   └── img/                    # 画像ファイル
-├── inc/                        # 機能ファイル
-│   ├── custom-post-types.php   # カスタム投稿タイプ
-│   ├── custom-taxonomies.php   # カスタムタクソノミー
-│   ├── breadcrumb.php          # パンくずリスト
-│   ├── page-title.php          # ページタイトル
-│   └── tags.php                # タグ関数
-├── parts/                      # テンプレートパーツ
-│   ├── breadcrumb.php
-│   ├── drawer.php
-│   ├── totop.php
-│   ├── pagenation-*.php
-│   └── content/
-├── sass/                       # SCSS開発ファイル
-│   ├── config/                 # 設定ファイル
-│   ├── foundation/             # 基礎スタイル
-│   ├── layout/                 # レイアウト
-│   ├── components/             # コンポーネント
-│   ├── pages/                  # ページ固有スタイル
-│   ├── utilities/              # ユーティリティ
-│   └── wordpress/              # WordPress固有スタイル
-├── functions.php               # テーマ機能
-├── header.php                  # ヘッダー
-├── footer.php                  # フッター
-├── front-page.php              # フロントページ
-├── single.php                  # 個別投稿
-├── single-works.php            # 実績詳細
-├── archive.php                 # アーカイブ
-├── archive-works.php           # 実績アーカイブ
-├── page.php                    # 固定ページ
-├── page-*.php                  # カスタム固定ページ
-├── sidebar.php                 # サイドバー
-├── sidebar-works.php           # 実績用サイドバー
-├── 404.php                     # 404エラー
-└── style.css                   # テーマ情報
+# WordPress起動
+pnpm start
+
+# テーマ有効化
+pnpm wp-env run cli wp theme activate takumi-theme
 ```
 
-## テンプレートファイル
+### 2. 自動セットアップ
 
-| ファイル | 用途 |
-|---------|------|
-| `front-page.php` | トップページ |
-| `header.php` | ヘッダー |
-| `footer.php` | フッター |
-| `single.php` | ブログ個別ページ |
-| `single-works.php` | 実績詳細ページ |
-| `archive.php` | ブログ一覧 |
-| `archive-works.php` | 実績一覧 |
-| `page.php` | 固定ページ |
-| `page-company.php` | 会社概要 |
-| `page-service.php` | 事業内容 |
-| `page-recruit.php` | 採用情報 |
-| `page-job1.php` | 求人詳細1 |
-| `page-job2.php` | 求人詳細2 |
-| `page-job3.php` | 求人詳細3 |
-| `page-contact.php` | お問い合わせ |
-| `page-privacy-policy.php` | プライバシーポリシー |
-| `404.php` | 404エラー |
-| `sidebar.php` | サイドバー |
-| `sidebar-works.php` | 実績用サイドバー |
+```bash
+pnpm setup:pages      # 固定ページ作成
+pnpm setup:menus      # メニュー作成
+pnpm setup:settings   # WordPress設定
+```
+
+**作成される固定ページ:**
+- 会社概要、事業内容、採用情報
+- 求人詳細×3
+- お問い合わせ、プライバシーポリシー
+
+**WordPress設定:**
+- パーマリンク（投稿名）
+- タイムゾーン（Asia/Tokyo）
+- 日付・時刻フォーマット（日本語形式）
+
+### 3. 言語設定（手動）
+
+**管理画面 → 設定 → 一般**
+
+1. Site Languageを「日本語」に変更
+2. 保存
+
+### 4. Contact Form 7（手動）
+
+**管理画面 → お問い合わせ → 新規追加**
+
+```html
+<div class="c-form-group">
+    <div class="c-form-label c-form-label__required">お名前</div>
+    [text* your-name class:c-form-input placeholder "例）山田 太郎"]
+</div>
+
+<div class="c-form-group">
+    <div class="c-form-label c-form-label__required">ふりがな</div>
+    [text* your-kana class:c-form-input placeholder "例）やまだ たろう"]
+</div>
+
+<div class="c-form-group">
+    <div class="c-form-label">会社名</div>
+    [text your-company class:c-form-input placeholder "例）〇〇株式会社"]
+</div>
+
+<div class="c-form-group">
+    <div class="c-form-label">ご住所</div>
+    [text your-address class:c-form-input placeholder "例）〒000-0000 東京都〇〇区〇〇町1-2-3"]
+</div>
+
+<div class="c-form-group">
+    <div class="c-form-label">電話番号</div>
+    [tel your-phone class:c-form-input placeholder "例）000-0000-0000"]
+</div>
+
+<div class="c-form-group">
+    <div class="c-form-label c-form-label__required">E-mail</div>
+    [email* your-email class:c-form-input placeholder "例）abc@example.com"]
+</div>
+
+<div class="c-form-group">
+    <div class="c-form-label c-form-label__required">お問合わせ内容</div>
+    [textarea* your-message class:c-form-textarea placeholder "ご意見・ご要望などございましたら、お書きください。"]
+</div>
+
+<div class="c-form-submit">
+    <div class="c-form-submit-wrap">
+        [submit class:c-form-submit-btn "送信する"]
+    </div>
+</div>
+```
+
+保存後、ショートコードを「お問い合わせ」ページに追加。
+
+### 5. 完了確認
+
+管理画面で以下を確認：
+- 固定ページが8ページ作成されている
+- メニューが3つ登録されている
+- Site Languageが「日本語」になっている
+- Contact Form 7のフォームが作成されている
+
+## ディレクトリ構造
+
+```
+portfolio_01/
+├── wordpress/
+│   ├── themes/takumi-theme/
+│   │   ├── assets/         # CSS, JS, 画像
+│   │   ├── inc/            # 機能ファイル
+│   │   ├── parts/          # テンプレートパーツ
+│   │   ├── sass/           # SCSS
+│   │   └── *.php           # テンプレート
+│   └── plugins/
+│       ├── advanced-custom-fields-pro/
+│       ├── contact-form-7/
+│       └── all-in-one-wp-migration/
+├── setup/                  # セットアップスクリプト
+├── .wp-env.json
+└── package.json
+```
+
+## 便利なコマンド
+
+```bash
+pnpm start              # WordPress起動
+pnpm stop               # WordPress停止
+pnpm destroy            # 環境削除
+
+pnpm setup:pages        # 固定ページ作成
+pnpm setup:menus        # メニュー作成
+pnpm setup:settings     # WordPress設定
+pnpm reset              # データリセット
+
+# WP-CLI実行
+pnpm wp-env run cli wp <command>
+```
+
+## トラブルシューティング
+
+### スクリプトエラー
+```bash
+# wp-env再起動
+pnpm destroy && pnpm start
+```
+
+### 環境確認
+```bash
+pnpm wp-env status
+pnpm wp-env run cli wp theme list
+```
+
+## 参考
+- [WP-CLI](https://wp-cli.org/ja/)
+- [@wordpress/env](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/)
