@@ -277,18 +277,25 @@ add_image_size( 'my_thumbnail', 840, 600, true );
  * ACFフィールドグループのJSON保存先を設定
  * フィールドグループを編集すると、自動的にJSONファイルとして保存される
  */
-add_filter( 'acf/settings/save_json', function( $path ) {
+function my_acf_json_save_point( $path ) {
 	return get_stylesheet_directory() . '/acf-json';
-} );
+}
+add_filter( 'acf/settings/save_json', 'my_acf_json_save_point' );
 
 /**
  * ACFフィールドグループのJSON読み込み先を設定
  * JSONファイルからフィールドグループを読み込む
  */
-add_filter( 'acf/settings/load_json', function( $paths ) {
+function my_acf_json_load_point( $paths ) {
+	// Remove the original path (optional).
+	unset( $paths[0] );
+
+	// Append the new path and return it.
 	$paths[] = get_stylesheet_directory() . '/acf-json';
+
 	return $paths;
-} );
+}
+add_filter( 'acf/settings/load_json', 'my_acf_json_load_point' );
 
 // ========================================
 // 外部ファイルの読み込み
