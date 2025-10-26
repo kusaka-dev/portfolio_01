@@ -1,1 +1,8 @@
+# Dependencies
 node_modules
+
+# WordPress env
+.wp-env.override.json
+
+# ACF JSONはコミットする（除外しない）
+# wordpress/themes/takumi-theme/acf-json/*.json
