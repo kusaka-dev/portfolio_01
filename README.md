@@ -2,6 +2,12 @@
 
 建築設計事務所向けWordPressカスタムテーマ
 
+## サイト情報
+
+- **URL**: https://portfolio01.kusaka-web.site/
+- **BASIC認証 ID**: Kusaka-web-guest
+- **BASIC認証 PASS**: Yc54Me3D
+
 ## 基本情報
 
 - **バージョン**: 1.0

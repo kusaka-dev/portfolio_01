@@ -31,7 +31,7 @@ get_template_part( 'parts/breadcrumb' );
     </div>
 
     <div class="c-contact-form js-fade-in">
-      <?php echo do_shortcode('[contact-form-7 id="0c418ec" title="Contact form 1"]'); ?>
+      <?php echo do_shortcode('[contact-form-7 id="164d7c9" title="お問い合わせフォーム"]'); ?>
     </div>
 
   </div>
