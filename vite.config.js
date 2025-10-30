@@ -1,29 +1,68 @@
 import { defineConfig } from 'vite';
-import { inputFiles } from './vite/config/input.js';
-import { plugins } from './vite/config/plugins.js';
+import { ViteEjsPlugin } from "vite-plugin-ejs";
+import sassGlobImports from 'vite-plugin-sass-glob-import';
+import { globSync } from 'glob';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const jsFiles = Object.fromEntries(
+  globSync('src/**/*.js', { ignore: ['node_modules/**','**/modules/**','**/dist/**']}).map(file => [
+    path.relative(
+      'src',
+      file.slice(0, file.length - path.extname(file).length)
+    ),
+    fileURLToPath(new URL(file, import.meta.url))
+  ])
+);
+
+const scssFiles = Object.fromEntries(
+  globSync('src/assets/styles/pages/**/*.scss', { ignore: ['src/assets/styles/pages/**/_*.scss'] }).map(file => [
+    path.relative(
+      'src',
+      file.slice(0, file.length - path.extname(file).length)
+    ),
+    fileURLToPath(new URL(file, import.meta.url))
+  ])
+);
+
+const htmlFiles = Object.fromEntries(
+  globSync('src/**/*.html', { ignore: ['node_modules/**', '**/dist/**'] }).map(file => [
+    path.relative(
+      'src',
+      file.slice(0, file.length - path.extname(file).length)
+    ),
+    fileURLToPath(new URL(file, import.meta.url))
+  ])
+);
+
+const inputObject = { ...scssFiles, ...jsFiles, ...htmlFiles };
 
 export default defineConfig({
-    root: './src',
-    base: './',
-    build: {
-        outDir: '../dist',
-        emptyOutDir: true,
-        rollupOptions: {
-            input: inputFiles,
-            output: {
-                entryFileNames: 'assets/js/[name].js',
-                chunkFileNames: 'assets/js/[name].js',
-                assetFileNames: (assets) => {
-                    if (/\.(gif|jpeg|jpg|png|svg|webp)$/.test(assets.name)) return assets.originalFileName;
-                    if (/\.css$/.test(assets.name)) return 'assets/css/[name].[ext]';
-                    return 'assets/[name].[ext]';
-                },
-            },
+  root: './src',
+  build: {
+    outDir: '../dist',
+    rollupOptions: {
+      input: inputObject,
+      output: {
+        entryFileNames: `assets/[name].js`,
+        chunkFileNames: `assets/[name].js`,
+        assetFileNames: (assetInfo) => {
+          if (/\.( gif|jpeg|jpg|png|svg|webp| )$/.test(assetInfo.name)) {
+            return 'assets/[name].[ext]';
+          }
+          if (/\.css$/.test(assetInfo.name)) {
+            return 'assets/styles/[name].[ext]';
+          }
+          return 'assets/[name].[ext]';
         },
-        assetsInlineLimit: 0,
+      },
     },
-    plugins,
-    server: {
-        port: 3000,
-    },
+  },
+  plugins: [
+    ViteEjsPlugin(),
+    sassGlobImports()
+  ],
+  server: {
+    port: 3000
+  }
 });

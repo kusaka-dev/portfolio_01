@@ -1,27 +1,24 @@
-<<<<<<< HEAD
-/node_modules/*
-.DS_Store
-/dist/*
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-
-# Local History for Visual Studio Code
-.history/
-
-# Built Visual Studio Code Extensions
-*.vsix
-=======
-# Dependencies
 node_modules
+dist
+dist-ssr
+*.local
 
-# WordPress env
-.wp-env.override.json
-
-# ACF JSONはコミットする（除外しない）
-# wordpress/themes/takumi-theme/acf-json/*.json
->>>>>>> f2c874aab5f8e608c75d57b54ea0a513bc781761
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
