@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /node_modules/*
 .DS_Store
 /dist/*
@@ -14,3 +15,13 @@
 
 # Built Visual Studio Code Extensions
 *.vsix
+=======
+# Dependencies
+node_modules
+
+# WordPress env
+.wp-env.override.json
+
+# ACF JSONはコミットする（除外しない）
+# wordpress/themes/takumi-theme/acf-json/*.json
+>>>>>>> f2c874aab5f8e608c75d57b54ea0a513bc781761
